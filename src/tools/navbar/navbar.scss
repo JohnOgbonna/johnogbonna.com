@@ -1,0 +1,15 @@
+.links{ 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding-right: 1rem; 
+    margin-right: 1rem; 
+    :last-child{ 
+        margin-right: 0;
+    }
+} 
+.NavBar{ 
+    box-sizing: border-box;
+    padding:0 1rem ; 
+    
+}
