@@ -1,7 +1,7 @@
-import './navbar.scss' 
-import React, {useState} from 'react';
+import './navbar.scss'
+import React, { useState } from 'react';
 
-function NavBar() {
+function NavBar(props) {
   const navItems = [
     {
       name: "Home",
@@ -29,7 +29,9 @@ function NavBar() {
       <ul className="links">
         {navItems.map(link => {
           return (
-            <li className="links_item" id="homeNavLink">{link.name}</li>
+            <li className="links_item" id="homeNavLink"
+              onClick={() => props.changeSelection(link.name)}
+            >{link.name}</li>
           )
         })}
       </ul>

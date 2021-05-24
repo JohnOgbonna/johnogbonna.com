@@ -1,3 +1,33 @@
 .Home{ 
     margin: 0 1rem;
+} 
+.section
+{  
+    display:flex; 
+    flex-direction: column;
+    
+    &Image {     
+    height: 480px; 
+    width: 360px; 
+    border-radius: 5px; 
+    align-self: flex-end;
+    } 
+    &_paragraph{ 
+        &-photo{ 
+            max-width: 80%; 
+            margin: 0; 
+            border-radius: 10px; 
+            max-height: 500px;
+        } 
+        &-image{ 
+            margin: 0;
+        }
+    }
+ } 
+ .displaySection{ 
+     margin: 0 1rem;
+ }
+#logo{ 
+    height: 90px; 
+    width: 160px;
 }
