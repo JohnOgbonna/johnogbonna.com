@@ -10,7 +10,8 @@ import brainstation_logo from '../../assets/logos/brainstation_logo.png'
 
 function About() {
     return (
-        <div className="About" id="section">
+        <div className="About" id="section"> 
+        <h2 className="mainSectionHeader">About Me</h2>
             <div className="section" id="bio">
                 <div className="section_content">
                     <h3 className="section_header">Bio</h3>

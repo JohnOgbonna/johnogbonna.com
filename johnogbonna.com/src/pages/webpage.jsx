@@ -4,7 +4,8 @@ import './webpage.scss';
 import NavBar from '../tools/navbar/navbar';
 import Home from './sections/home'; 
 import About from './sections/about';
-
+import Skills from './sections/skills';
+import Contact from './sections/contact'; 
 
 
 function Webpage() { 
@@ -25,6 +26,16 @@ function Webpage() {
             <div className="displaySection">
                 {section === "About" ?
                     <About /> :
+                    null}
+            </div> 
+            <div className="displaySection">
+                {section === "Skills" ?
+                    <Skills /> :
+                    null}
+            </div>
+            <div className="displaySection">
+                {section === "Contact" ?
+                    <Contact /> :
                     null}
             </div>
         </div>
