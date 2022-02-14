@@ -5,7 +5,9 @@ import nodejs_logo from '../../assets/logos/nodejs_logo.svg';
 import postgresql_logo from '../../assets/logos/postgresql_logo.svg';
 import react_logo from '../../assets/logos/react_logo.svg';
 import sass_logo from '../../assets/logos/sass_logo.svg'; 
-import resume from '../../assets/documents/Resume2021.pdf';
+import resume from '../../assets/documents/Resume2021.pdf'; 
+import { useEffect } from "react"; 
+import { useState } from 'react';
 
 let languages = [
     {
@@ -32,10 +34,28 @@ let languages = [
         name: 'Sass',
         image: sass_logo, 
         url: 'https://sass-lang.com/'
+    }, 
+    {
+        name: 'Postgresql',
+        image: postgresql_logo, 
+        url: 'https://www.postgresql.org/'
     },
 ]
 
-function Skills() {
+function Skills(props) { 
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(()=>{ 
+        if (props.scroll){
+            window.scrollTo(0, props.scroll)
+         } 
+         console.log(props.scroll)
+    }, [isLoading])
+    useEffect(()=> {
+        return () => {
+            props.setScrollPosition('Skills', window.scrollY) 
+            console.log('return', props.scroll, )
+        };
+    }, []) 
     return (
         <div className="Skills" id="section">
             <h2 className="mainSectionHeader">Skills</h2>
@@ -60,7 +80,7 @@ function Skills() {
                     <ul className="skills_list">
                         <li className="skill_list--name">Sales</li> 
                         <li className="skill_list--name">Point of Sale/Retail</li> 
-                        <li className="skill_list--name">Data Entry (Microsoft Office</li>
+                        <li className="skill_list--name">Data Entry (Microsoft Office)</li>
                     </ul> 
                     <h4 className = 'resume'>Have a look at my resume <a classname = 'resume_link' href = {resume} download= 'Resume'>Here!</a></h4>
 

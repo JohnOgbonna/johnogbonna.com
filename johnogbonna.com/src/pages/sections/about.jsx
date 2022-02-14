@@ -7,11 +7,28 @@ import grad_photo4 from '../../assets/photos/grad/grad_photo4.jpg'
 import grad_photo1 from '../../assets/photos/grad/grad_photo1.jpg'
 import self_photo8 from '../../assets/photos/self/self_photo8.jpg'
 import brainstation_logo from '../../assets/logos/brainstation_logo.png'
+import { useEffect } from "react";
+import { useState } from 'react';
 
-function About() {
+function About(props) {
+
+    useEffect(() => {
+        if (props.scroll) {
+            window.scrollTo(0, props.scroll)
+        }
+        console.log(props.scroll)
+    }, [])
+    // useEffect(()=> {
+    //     return () => {
+    //         props.setScrollPosition('About', window.scrollY) 
+    //         console.log('return', props.scroll, )
+    //     };
+    // }, []) 
+    
+
     return (
-        <div className="About" id="section"> 
-        <h2 className="mainSectionHeader">About Me</h2>
+        <div className="About" id="section">
+            <h2 className="mainSectionHeader">About Me</h2>
             <div className="section" id="bio">
                 <div className="section_content">
                     <h3 className="section_header">Bio</h3>
@@ -93,7 +110,7 @@ function About() {
                         <div className="section_paragraph-images">
                             <figure className="section_paragraph-image">
                                 <img className="section_paragraph-photo" src={brainstation_logo} />
-                                <figcaption className="section_paragraph-caption">BrainStation's logo. <a href = "/">Visit BrainStations' website!</a></figcaption>
+                                <figcaption className="section_paragraph-caption">BrainStation's logo. <a href="/">Visit BrainStations' website!</a></figcaption>
                             </figure>
                         </div>
                     </div>
