@@ -2,6 +2,7 @@ import { useState } from 'react';
 import coverPhoto from '../assets/photos/self/coverphoto.JPG';
 import './webpage.scss';
 import NavBar from '../tools/navbar/navbar';
+import NavBarMobile from '../tools/navbar/navbarMobile';
 import Home from './sections/home';
 import About from './sections/about';
 import Skills from './sections/skills';
@@ -9,8 +10,11 @@ import Gallery from './sections/gallery';
 import Contact from './sections/contact';
 
 
-function Webpage() {
-    const [section, setSection] = useState("Home");
+
+
+
+function Webpage(props) {
+    const [section, setSection] = useState(props.section);
     let [scrollPosition, scrollPositionSet] = useState({
         About: null,
         Skills: null,
@@ -25,6 +29,9 @@ function Webpage() {
     }
     return (
         <div className="Webpage">
+            <NavBarMobile 
+            changeSelection={setSection} 
+            section = {section}/>
             <img src={coverPhoto} className="coverPhoto" id="coverPhoto" />
             <NavBar changeSelection={setSection} />
             <div className="displaySection">

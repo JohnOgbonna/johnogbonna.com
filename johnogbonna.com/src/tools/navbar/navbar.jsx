@@ -1,5 +1,7 @@
 import './navbar.scss'
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'; 
+
 
 function NavBar(props) {
   const navItems = [
@@ -29,9 +31,10 @@ function NavBar(props) {
       <ul className="links">
         {navItems.map(link => {
           return (
-            <li className="links_item" id="homeNavLink"
+            <Link to ={`/${link.name}`}><li className="links_item" id="homeNavLink"
               onClick={() => props.changeSelection(link.name)}
             >{link.name}</li>
+            </Link>
           )
         })}
       </ul>

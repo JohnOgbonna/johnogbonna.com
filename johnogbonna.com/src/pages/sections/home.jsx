@@ -19,7 +19,9 @@ function Home() {
                     </p>
                 </div>
                 <div className="sectionImages">
-                    <img className="sectionImage" src={aboutMePic} />
+                    <div className="sectionImageWrapper">
+                        <img className="sectionImage" src={aboutMePic} />
+                    </div>
                 </div>
             </div>
             <div className="section">
