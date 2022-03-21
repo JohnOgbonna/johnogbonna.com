@@ -4,89 +4,113 @@ import javascript_logo from '../../assets/logos/javascript_logo.svg'
 import nodejs_logo from '../../assets/logos/nodejs_logo.svg';
 import postgresql_logo from '../../assets/logos/postgresql_logo.svg';
 import react_logo from '../../assets/logos/react_logo.svg';
-import sass_logo from '../../assets/logos/sass_logo.svg'; 
-import resume from '../../assets/documents/Resume2021.pdf'; 
-import { useEffect } from "react"; 
+import sass_logo from '../../assets/logos/sass_logo.svg';
+import resume from '../../assets/documents/Resume2021.pdf';
+import { useEffect } from "react";
 import { useState } from 'react';
+import scrollArrow from '../../tools/other/scroll_arrow.svg'
 
 let languages = [
     {
         name: 'HTML5',
-        image: html5_logo, 
-        url: null
+        image: html5_logo,
+        url: null,
+        description: 'I am well versed in the use of HTML to build the layout of custom webpages from scratch. I have used HTML and HTML-like frameworks for personal and professional Web Applications'
     },
     {
         name: 'Javascript',
-        image: javascript_logo, 
-        url: 'https://www.javascript.com/'
+        image: javascript_logo,
+        url: 'https://www.javascript.com/',
+        description: 'JavaScript has been a valuable tool in my software career. I have used it for personal projects as well as professionally. I am accustomed to the many benefits (and quirks) to the language and am experienced with several JS frameworks such as React and Node JS'
     },
     {
         name: 'React',
-        image: react_logo, 
-        url: 'https://reactjs.org/'
+        image: react_logo,
+        url: 'https://reactjs.org/',
+        description: 'React is perhaps my favourite front-end Web Application Development framework. I have used it in personal projects and also to make this website! From state, to props, to React Hooks, I am well versed in the framework and enjoy using it often!'
     },
     {
         name: 'Node',
-        image: nodejs_logo, 
-        url: 'https://nodejs.org/en/'
+        image: nodejs_logo,
+        url: 'https://nodejs.org/en/',
+        description: 'For the server side of things, I prefer to use Node JS. I have used it for personal projecs as well as for professional projects. Node JS is very convenient due to the numerous plugins and several possible use scenarios'
     },
     {
         name: 'Sass',
-        image: sass_logo, 
-        url: 'https://sass-lang.com/'
-    }, 
+        image: sass_logo,
+        url: 'https://sass-lang.com/',
+        description: 'Using Sass (SCSS), my prefered CSS extension, I am capable of website styling and design. I have used Sass (and by extension CSS) to create modern UI designs and custom stylings'
+    },
     {
         name: 'Postgresql',
-        image: postgresql_logo, 
-        url: 'https://www.postgresql.org/'
+        image: postgresql_logo,
+        url: 'https://www.postgresql.org/',
+        description: 'Professionally, I have used Postgresql to maintain and alter several live databases. I am well versed in SQL queries and the use of SQL for data organization and information storage'
+
     },
 ]
 
-function Skills(props) { 
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(()=>{ 
-        if (props.scroll){
+function Skills(props) {
+    let [isLoading, setIsLoading] = useState(true);
+    let [largeViewIndex, setlargeViewIndex] = useState(1)
+    useEffect(() => {
+        if (props.scroll) {
             window.scrollTo(0, props.scroll)
-         } 
-         console.log(props.scroll)
+        }
+        console.log(props.scroll)
     }, [isLoading])
-    useEffect(()=> {
+    useEffect(() => {
         return () => {
-            props.setScrollPosition('Skills', window.scrollY) 
-            console.log('return', props.scroll, )
+            props.setScrollPosition('Skills', window.scrollY)
+            console.log('return', props.scroll,)
         };
-    }, []) 
+    }, [])
     return (
         <div className="Skills" id="section">
-            <h2 className="mainSectionHeader">Skills</h2>
-            <div className="section" id="programmingLanguages">
-                <div className="section_content">
-                    <h3 className="section_header">Programming Languages</h3>
-                    {languages.map(language => {
-                        return (
-                            <div className="section_paragraph">
-                                <h4 className="section_paragraph-header">{language.name}</h4>
-                                <p className="section_paragraph-text">
-                                </p>
-                                <a href = {language.url} target="_blank"><img src={language.image}/></a>
-                            </div>)
-                    })
-                    }
-
-                </div>
-                <div className='section'>
-                    <div className='section_content'>
-                    <h3 className="section_header">Other Skills/Experience</h3>
-                    <ul className="skills_list">
-                        <li className="skill_list--name">Sales</li> 
-                        <li className="skill_list--name">Point of Sale/Retail</li> 
-                        <li className="skill_list--name">Data Entry (Microsoft Office)</li>
-                    </ul> 
-                    <h4 className = 'resume'>Have a look at my resume <a classname = 'resume_link' href = {resume} download= 'Resume'>Here!</a></h4>
-
+            <h2 className="section_header">Skills</h2>
+            <h3 className="section_subheader">Web Development</h3>
+            <div className="section" id="programingLanguages">
+                {languages.map((language, index) => {
+                    return (
+                        <div className="section_paragraph" id='skillsDisplay'>
+                            <img src={language.image} onClick={() => {
+                                setlargeViewIndex(index)
+                            }} />
+                        </div>)
+                })
+                }
+            </div>
+            { largeViewIndex > -1 ?
+                <div className='skillsLargeView'>
+                    <div className='skillsLargeView_selector'>
+                        {largeViewIndex -1 > -1 ? <div className='scrollArrowBackground' onClick = {()=>{
+                            setlargeViewIndex(largeViewIndex-1)
+                        }}><img className='scrollArrowLeft' src={scrollArrow} /></div> : null }
+                        <a href={languages[largeViewIndex].url} className = 'skillsLargeViewLink' target="_blank"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt={languages[largeViewIndex].name} />
+                        </a>
+                        { largeViewIndex +1 < languages.length ? <div className='scrollArrowBackground' onClick = {()=>{
+                            setlargeViewIndex(largeViewIndex+1)
+                        }}><img className='scrollArrowRight' src={scrollArrow} /></div> : null}
                     </div>
+                    <p className='skillsLargeViewDescription'>{languages[largeViewIndex].description}</p>
+                </div>
+                :
+                null
+            }
+
+            <div className='section' id='skillsOther'>
+                <div className='section_content'>
+                    <h3 className="section_subheader">Other Skills/Experience</h3>
+                    <ul className="skills_list">
+                        <li className="skill_list--name">Sales</li>
+                        <li className="skill_list--name">Point of Sale/Retail</li>
+                        <li className="skill_list--name">Data Entry (Microsoft Office)</li>
+                    </ul>
+                    <h4 className='resume'>Have a look at my resume <a classname='resume_link' href={resume} download='Resume'>Here!</a></h4>
+
                 </div>
             </div>
+
         </div>
     )
 }

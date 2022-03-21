@@ -25,13 +25,13 @@ function NavBar(props) {
       name: "Contact",
       sections: []
     }
-  ]
+  ] 
   return (
     <div className="NavBar">
       <ul className="links">
         {navItems.map(link => {
           return (
-            <Link to ={`/${link.name}`}><li className="links_item" id="homeNavLink"
+            <Link to ={`/${link.name}`} style={{ textDecoration: 'none' }}><li className="links__item" id="homeNavLink" 
               onClick={() => props.changeSelection(link.name)}
             >{link.name}</li>
             </Link>

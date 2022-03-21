@@ -2,19 +2,23 @@ $breakpoint-tablet: 768px;
 $breakpoint-large-tablet: 1068px;
 $breakpoint-desktop: 1280px;
 
-$themePink: #af254e; 
+$themeRed: #a80000d3;
 $themeDark: #52317e; 
 $themePurple: #44318d; 
 $themeLightPurple: #E98074; 
 $themeGreen: #a4b6b5; 
-$themebackground: #f1ecef; 
+$themebackground: #fdfbfb; 
 $themeGreen2: #49a086; 
 
 @font-face{ 
-    src: url(../fonts/RussoOne-Regular.ttf); 
+    src: url(../fonts/SecularOne-Regular.ttf); 
     font-family: head;
 } 
 @font-face{ 
-    src: url(../fonts/SecularOne-Regular.ttf);
+    src: url(../fonts/Roboto-Thin.ttf);
     font-family: body;
+} 
+@font-face{ 
+    src: url(../fonts/Roboto-Regular.ttf);
+    font-family: body_header;
 }

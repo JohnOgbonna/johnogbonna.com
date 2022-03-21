@@ -35,7 +35,11 @@ function NavBarMobile(props) {
                 <img className="NavBarMobile__menu" src={selecting? closeButton : menuButton}/>
                 <h2 className="NavBarMobile__header">{props.section}</h2>
             </div>
-            <div className = {`linksWrapper${selecting ? 'Active' : 'Hidden'}`}>
+            <div className = {`linksWrapper${selecting ? 'Active' : 'Hidden'}`} onClick={(e) => {
+                        e.preventDefault();
+                        if (e.target === e.currentTarget) {
+                            setSelecting(false)
+                        }}}>
                 <ul className="linksMobile">
                     {navItems.map(link => {
                         return (

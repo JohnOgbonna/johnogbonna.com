@@ -143,21 +143,19 @@ function Gallery(props) {
 
     return (
         <div className="Gallery" id="section">
-            <h2 className="mainSectionHeader" >Gallery</h2>
+            <h2 className="section_header" >Gallery</h2>
             <div className='Gallery__selector'>
-                <h2 className='Gallery__selector-text'>{`${category} Photos`}</h2>
+                <h2 className='section_subheader' id = 'galleryHeader'>{`${category} Photos`}</h2>
                 <img className='mainSectionArrow' src={dropDownArrow} alt='dropDownArrow' onClick={() => setSelecting(!selecting)} />
             </div>
-            {selecting ?
-
-                <div className='Gallery__selector-box'>
+                <div className={`Gallery__selector-box${selecting ? 'Active': ''}`}>
                     <ul className='Gallery__selector-box--list'>
                         <li onClick={() => switchCategory('All')}>All Photos</li>
                         <li onClick={() => switchCategory('Grad')}>Grad Photos</li>
                         <li onClick={() => switchCategory('Family')}>Family Photos</li>
                         <li onClick={() => switchCategory('Self')}>Self Photos</li>
                     </ul>
-                </div> : null}
+                </div> 
             <div className='Gallery__photos'>
                 {category === 'All' ?
                     photos.map((image, index) => {
