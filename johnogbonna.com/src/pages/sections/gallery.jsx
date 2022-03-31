@@ -22,11 +22,15 @@ import self_photo6 from '../../assets/photos/self/self_photo6.jpg'
 import self_photo7 from '../../assets/photos/self/self_photo7.jpg'
 import self_photo8 from '../../assets/photos/self/self_photo8.jpg'
 import other_pic1 from '../../assets/photos/other/other_pic1.jpeg'
-import dropDownArrow from '../../tools/other/drop-down-arrow.svg'
+import dropDownArrow from '../../tools/other/scroll_arrow.svg'
 import { useState } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
 
 function Gallery(props) {
-    let [category, setCategory] = useState('All');
+    let categories = ['All', 'Grad', 'Family', 'Self', 'Other']
+    let params = useParams();
+    let navigate = useNavigate();
+    let [category, setCategory] = useState(categories.includes(params.photoCategory) ? params.photoCategory : 'All');
     let [selecting, setSelecting] = useState(false)
     let [largeViewIndex, setLargeViewIndex] = useState(null)
     let [largeViewPhotos, setLargeViewPhotos] = useState(null)
@@ -134,28 +138,46 @@ function Gallery(props) {
         },
         {
             picture: other_pic1,
-            category: 'other'
+            category: 'Other'
         },
     ]
     let gradPhotos = photos.filter(photo => photo.category === 'Grad')
     let familyPhotos = photos.filter(photo => photo.category === 'Family')
     let selfPhotos = photos.filter(photo => photo.category === 'Self')
+    let otherPhotos = photos.filter(photo => photo.category === 'Other')
 
     return (
         <div className="Gallery" id="section">
-            <h2 className="section_header" >Gallery</h2>
+            <h2 className={`section_header${props.theme.color}`} >Gallery</h2>
             <div className='Gallery__selector'>
-                <h2 className='section_subheader' id = 'galleryHeader'>{`${category} Photos`}</h2>
-                <img className='mainSectionArrow' src={dropDownArrow} alt='dropDownArrow' onClick={() => setSelecting(!selecting)} />
+                <h2 className={`section_header${props.theme.color}`} id='galleryHeader'>{`${category} Photos`}</h2>
+                <div className={`scrollArrowBackground${props.theme.color}`} id='galleryArrowBackground'> <img className={'mainSectionArrow'} id={`galleryArrow${selecting ? 'Expanded' : ''}`} src={dropDownArrow} alt='dropDownArrow' onClick={() => setSelecting(!selecting)} />
+                </div>
             </div>
-                <div className={`Gallery__selector-box${selecting ? 'Active': ''}`}>
-                    <ul className='Gallery__selector-box--list'>
-                        <li onClick={() => switchCategory('All')}>All Photos</li>
-                        <li onClick={() => switchCategory('Grad')}>Grad Photos</li>
-                        <li onClick={() => switchCategory('Family')}>Family Photos</li>
-                        <li onClick={() => switchCategory('Self')}>Self Photos</li>
-                    </ul>
-                </div> 
+            <ul className={`Gallery__selector-box${selecting ? 'Active' : ''}`}>
+            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                    switchCategory('All')
+                    navigate('/Gallery/All');
+                }}>All Photos</li>
+            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                    switchCategory('Grad')
+                    navigate('/Gallery/Grad');
+                }}>Grad Photos</li>
+            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                    switchCategory('Family')
+                    navigate('/Gallery/Family');
+                }}>Family Photos</li>
+            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                    switchCategory('Self')
+                    navigate('/Gallery/Self')
+                }
+                }>Self Photos</li>
+            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                    switchCategory('Other')
+                    navigate('/Gallery/Other')
+                }
+                }>Other Photos</li>
+            </ul>
             <div className='Gallery__photos'>
                 {category === 'All' ?
                     photos.map((image, index) => {
@@ -193,9 +215,17 @@ function Gallery(props) {
                         )
                     })
                     : null}
+                    {category === 'Other' ?
+                    otherPhotos.map((image, index) => {
+                        return (
+                            <div className='photoBox'>
+                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(otherPhotos, index)} />
+                            </div>
+                        )
+                    })
+                    : null}
             </div>
             {largeViewPhotos && largeViewIndex > -1 ?
-
                 <div className='largeView' onClick={(e) => {
                     e.preventDefault();
                     if (e.target === e.currentTarget) {
@@ -209,13 +239,17 @@ function Gallery(props) {
                         }
                     }}>
                         {largeViewIndex - 1 > -1 ?
-                            <img className='arrowLeft' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex - 1)} />
+                            <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}><img id='galleryArrowLeft' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex - 1)} />
+                            </div>
                             : null}
                         <div className='largeView__picture-background'>
                             <img className='largeView__picture-photo' src={largeViewPhotos[largeViewIndex].picture} alt='picture' />
                         </div>
                         {largeViewIndex + 1 < largeViewPhotos.length ?
-                            <img className='arrowRight' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex + 1)} /> : null}
+                            <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}>
+                                <img id='galleryArrowRight' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex + 1)} />
+                            </div>
+                            : null}
                     </div>
                 </div>
 

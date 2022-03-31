@@ -7,25 +7,30 @@
  @include tablet{
     flex-direction: row;
     width: 100%;
-    margin: 1rem 0 8rem 0;
+    margin: 0rem 0 8rem 0;
  }
     &_header{ 
-        margin: 0;
-        position: relative;
-        padding: 1rem 0 0rem 1rem;
-        width: 100%;
-        right: 1rem;
-        align-self: center;
-        font-family: head;
-        font-size: 1.5rem;
-        color: $themeRed;
-
-
-    }
+        &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+            margin: 0;
+            position: relative;
+            padding: 1rem 0 0rem 1rem;
+            width: 100%;
+            right: 1rem;
+            align-self: center;
+            font-family: head;
+            font-size: 1.5rem;
+            color: $themeRed;
+        }
+        @include themeText;
+     }
     &_subheader{
+        &Red, &Blue, &Sky, &Purple, &Green, &Grey{
         font-family: head;
         color: $themeRed;
         margin-right: 1rem;
+        }
+        @include themeText;
+
     }
     display:flex; 
     flex-direction: column;
@@ -111,16 +116,19 @@
             }
         }
         &-caption{
-            margin: 0 0 2rem 0;
-            font-family: head;
-            color: $themeRed;
-            font-size: .8rem;
-            line-height: 1.2;
-            @include tablet {
-                font-size: 1rem;
-                width: 90%;
-                text-align: right;
+            &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                margin: 0 0 2rem 0;
+                font-family: head;
+                color: $themeRed;
+                font-size: .8rem;
+                line-height: 1.2;
+                @include tablet {
+                    font-size: 1rem;
+                    width: 90%;
+                    text-align: right;
+                }
             }
+            @include themeText
         }
     } 
     &_text{
@@ -131,16 +139,16 @@
     }
  } 
  .displaySection{ 
-     margin: 0 1rem;
+     margin: .5rem 1rem;
      padding: 0 1rem;
      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
      line-height: 1.5;
      
      @include tablet{
-         margin: 0 4rem;
+         margin: 1rem 4rem;
      }
      @include desktop{
-         margin: 0 6rem;
+         margin: 1rem 6rem;
          max-width: 1400px;
          box-sizing: border-box;
          width: 95%;
@@ -164,6 +172,10 @@
 .photogrid__photo{ 
     width: 100%;
     max-height: 500px;
+    &:hover{
+        transform: scale(1.2);
+        transition: .3s;
+    }
  
 } 
 .photoBox{ 
@@ -183,8 +195,6 @@
         justify-content: center;
         min-height: 100%;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-        border-radius: 15px;
-       
     } 
     &__selector{ 
         display: flex; 
@@ -192,14 +202,11 @@
     } 
 } 
 .mainSection{ 
-   
     &Arrow{ 
         max-height:1.5rem;
     }
 } 
-
 .largeView{ 
-
     position: fixed; 
     height: 100%;
     width: 100%; 
@@ -210,37 +217,38 @@
     display: flex; 
     justify-content: center;
     align-items: center;
-    
+    z-index: 10;
     &__picture{
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        max-height: 700px;
+        min-height: 200px;
         &-background{ 
-            width: auto; 
-            max-height: 80%;
+            width: 80%; 
+            height: 80%;
             margin: 0rem;
             display: flex;
             justify-content: space-between;
-            background-color: black;
             display: flex;
-        justify-content: center;
-        align-items: center;
-           
-            
-        } 
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px; 
+        }
         &-photo{ 
-            max-width: 95%;
+            max-width: 100%;
+            z-index: 10;
+            position: relative;
+            overflow-y: scroll;
+            max-height: 95vh;
+            margin: 0 2px;
+            @include tablet{
+                margin: 0 2rem;
+           }
         }
     }
 } 
-.arrow{ 
-    &Left, &Right{ 
-        height: 3rem; 
-        width: 3rem; 
-        position: relative; 
-
-    }
-}
 #section{
     font-family: body;
 }
@@ -301,16 +309,24 @@ html{
 .homeImageWrapper{
     width: 30%; 
 }
-#home{
-    &Gallery{
-        flex-direction: column;
-        &Images{
-            justify-content: center;
-            
-        }
+#Gallery{
+    flex-direction: column;
+    &Images{
+        justify-content: center;
+        
     }
-    &Contact{
-        background-color: $themeRed;
+    &Pic{
+        @include tablet{
+        height: auto;
+        width: 45%; 
+        height: auto;
+        margin: 0 1rem 1rem 0rem;
+        }
+        
+    }
+}
+#Contact{
+    &Red, &Blue, &Sky, &Purple, &Green, &Grey{
         width: 100%;
         align-self: center;
         position: relative;
@@ -319,21 +335,16 @@ html{
         color: ivory;
         font-family: head;
         margin-bottom: 0;
-        &Header{
-            color: ivory;
-        }
+        @include desktop{
+            padding: 100px 1rem;
+          }
     }
-
-    &GalleryPic{
-        @include tablet{
-        height: auto;
-        width: 45%; 
-        height: auto;
-        margin: 0 1rem 1rem 0rem;
-        }
+    @include themeBuilder;
+    &Header{
+        color: ivory;
     }
-
 }
+
 #contactLogo{ 
     height: auto;
     width: 90px;
@@ -356,16 +367,17 @@ html{
 
     }
 }
-#bio{
+#Bio{
+    margin: 0;
     @include tablet{
     flex-direction: column;
-    &_university{
-        @include tablet{
-            flex-direction: column;
-        }
-    }
     }
 }
+#University{
+    @include tablet{
+        flex-direction: column;
+        }
+    }
 #about{
     &Paragraph{
         font-family: body;
@@ -392,9 +404,8 @@ html{
         }
     }
     &Image{
-        width: calc(100% + 2rem);
+        width: 100%;
         position: relative;
-        right: 1rem;
         @include tablet{
             width: 95%;
             min-height: 300px;
@@ -421,9 +432,6 @@ html{
             max-width: 600px;
         }
     }
-    &Section{
-        
-    }
 }
 #middleImage{
     @include tablet{
@@ -440,7 +448,7 @@ html{
         display: inline-block;
     }
 }
-#skills{
+#homeskills{
     &Display{
        width: auto;
        height: 70px
@@ -453,11 +461,10 @@ html{
 #programingLanguages{
     display: flex;
     flex-direction: row;
-  
     overflow-x: scroll;
     flex-wrap: nowrap;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    margin: 2rem 0;
+    margin: 2rem auto;
     border-radius: 8px;
     height: 55px;
     align-items: center;
@@ -465,8 +472,11 @@ html{
     padding: 1rem ;
     width: 95%;
     max-width: 990px;
+    position: relative;
+    right: .4rem;
     @include desktop{
         margin: 0 auto;
+        right: 0;
     }
 }
 .skills{
@@ -514,19 +524,18 @@ html{
     }
     &Right{
         transform: rotate(-180deg);
-       
-       
-        
-    }
-    &Background{
+     }
+    &Background{     
+    &Red, &Blue, &Sky, &Purple, &Green, &Grey{
         height: 40px;
         width: 40px;
         display: flex;
         align-items: center;
-        background-color: $themeRed;
         border-radius: 100%;
         justify-content: center;
         border: 2px solid black;
+    }
+    @include themeBuilder;
         &:hover{
             transform: scale(1.1);
             transition: 100ms;
@@ -537,30 +546,51 @@ html{
     &__selector{
         margin-top: 1rem;
         &-box{
-            width: auto;
+            max-width: 0;
             max-height: 0px;
             overflow:hidden;
-            transition: max-height 0.25s;
-            background-color: $themeRed;
+            transition: max-height 0.25s, max-width 0.25s;
             font-family: head;
-                color: whitesmoke;
-                width: 60%;
-                border-radius: 5px;
+            color: whitesmoke;
+            border-radius: 5px;
+            padding: 0;
             &Active{
                 max-height: 400px;
-                transition: max-height 0.7s;
-                background-color: $themeRed;
+                transition: max-height 0.25s, max-width 0.25s;
+                border-radius: 5px;
                 font-family: head;
                 color: whitesmoke;
-                padding-bottom: .3rem;
+                padding: 0;
                 width: 60%;
-                border-radius: 5px;
+                max-width: 300px;
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-                border: 1px solid black;
-
             }
             &--list{
-                margin-top: 0;
+               margin: 0;
+               padding: 0;
+               border-radius: 5px;
+            }
+            &--item{
+                    &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                    padding: .5rem 0rem;
+                    border-bottom: 1px solid black;
+                    width: 100%;
+                    padding-left: 1rem;
+                    &:first-child{
+                        border-radius: 8px 8px 0 0 ;
+                    }
+                    &:last-child{
+                        border-radius: 0 0 8px 8px;
+                    }
+                    &:hover{
+                        transform: scale(1.1);
+                        transition: .3s;
+                        border-radius: 8px;
+                        text-decoration: underline;
+                        list-style: disc;
+                    }
+                }
+                @include themeBuilder;
             }
             
         }
@@ -568,6 +598,45 @@ html{
 }
 #gallery{
     &Header{
-        margin: 0 1rem 0 0;
+        margin: 0;
+        font-size: 20px;
+        width:fit-content;
+        padding-top: 0;
+    }
+    &ArrowBackground{
+        width: 20px;
+        height: 20px;
+        border: 2px solid black;
+        margin: auto 0;
+        &Large{
+                &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                height: 2rem;
+                width: 2rem;
+                border-radius: 100%;
+                border: 2px solid black;
+                @include tablet{
+                    height: 3rem;
+                    width: 3rem;
+                }
+            }
+            @include themeBuilder;
+        }
+    }
+    &Arrow{
+        transform: rotate(-90deg);
+        transition: .4s;
+        &Expanded{
+            transform: rotate(90deg);
+            position: relative; 
+            bottom: 2px;
+            transition: .4s;
+        }
+        &Left, &Right{ 
+            position: relative; 
+        }
+        &Right{ 
+            transform: rotate( -180deg);
+        }
+
     }
 }

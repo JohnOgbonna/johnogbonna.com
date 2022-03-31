@@ -14,12 +14,12 @@ import gmailLogo from '../../assets/logos/gmail_logo.svg';
 import linkedinLogo from '../../assets/logos/linkedin_logo.svg'; 
 const logos = [javascriptLogo,  reactLogo, nodeLogo, html5Logo, postgresql_logo, sassLogo
 ]
-function Home() {
+function Home(props) {
     return (
         <div className="Home" id="section">
-            <div className="section" id= 'homeAbout'>
+            <div className="section" id= 'About Me'>
                 <div className="section_text" id='aboutText'>
-                    <h3 className="section_header">About Me</h3>
+                    <h3 className={`section_header${props.theme.color}`}>About Me</h3>
                     <p className="section_paragraph">
                         <span className="section_paragraph-greeting">Hi there!</span> My name is John Ogbonna, and I'd like to tell you about myself! I'm a full-stack web developer on the weekdays, and several other things after hours 😎. I'm based in Ottawa, Ontario, but I'm living in Calgary, Alberta right now. I have lots more to show and tell you, <a className="sectionLink" href='/'>learn more about me here!</a>
                     </p>
@@ -30,9 +30,9 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="section" id= 'skills'>
+            <div className="section" id= 'Skills'>
                 <div className="section_text" id= 'skillsText'>
-                    <h3 className="section_header">Skills</h3>
+                    <h3 className={`section_header${props.theme.color}`}>Skills</h3>
                     <p className="section_paragraph">
                         I'm a Full stack Web Developer, proficient with several development frameworks and languages! <a className="sectionLink" href='/'>learn more about my skills here!</a>
                     </p>
@@ -48,23 +48,23 @@ function Home() {
                 </div>
 
             </div>
-            <div className="section" id = 'homeGallery'>
+            <div className="section" id = 'Gallery'>
                 <div className="section_text">
-                    <h3 className="section_header">Gallery</h3>
+                    <h3 className={`section_header${props.theme.color}`}>Gallery</h3>
                     <p className="section_paragraph">
                         There have been many interesting, fun, and hilarious memories I've captured! <a className="sectionLink" href='/'>View the gallery!</a>
                     </p>
                 </div>
-                <div className="sectionImages" id='homeGalleryImages'>
-                    <img className="sectionImage" id='homeGalleryPic' src={galleryPhoto1} alt='gallery picture' />
-                    <img className="sectionImage" id='homeGalleryPic' src={galleryPhoto2} alt='gallery picture' />
-                    <img className="sectionImage" id='homeGalleryPic' src={galleryPhoto3} alt='gallery picture' />
-                    <img className="sectionImage" id='homeGalleryPic' src={galleryPhoto4} alt='gallery picture' />
+                <div className="sectionImages" id='GalleryImages'>
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto1} alt='gallery picture' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto2} alt='gallery picture' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto3} alt='gallery picture' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto4} alt='gallery picture' />
                 </div>
             </div>
-            <div className="section" id='homeContact'>
-                <div className="section_text">
-                    <h3 className="section_header" id='homeContactHeader'>Contact Me!</h3>
+            <div className="section" id={`Contact${props.theme.color}`}>
+                <div className="section_text" id= 'Contact'>
+                    <h3 className={`section_header${props.theme.color}`} id='ContactHeader' >Contact Me!</h3>
                     <p className="section_paragraph">
                         Wanna get in touch? <a className="sectionLink" href='/'> Contact me!</a>
                     </p>

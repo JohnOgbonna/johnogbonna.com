@@ -12,8 +12,9 @@ function App() {
           <Route path = "/Home" element = {<Webpage section ={'Home'}/>}/>
           <Route path = "/About" element = {<Webpage section ={'About'}/>}/>
           <Route path = "/Skills" element = {<Webpage section ={'Skills'}/>}/>
-          <Route path = "/Gallery" element = {<Webpage section ={'Gallery'}/>}/>
+          <Route path = "/Gallery" exact element = {<Webpage section ={'Gallery'}/>}/>
           <Route path = "/Contact" element = {<Webpage section ={'Contact'}/>}/>
+          <Route path = "/Gallery/:photoCategory" element = {<Webpage section ={'Gallery'}/>}/>
         </Routes>
       </div>
     </Router> 

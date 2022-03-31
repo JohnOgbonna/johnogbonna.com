@@ -67,8 +67,8 @@ function Skills(props) {
     }, [])
     return (
         <div className="Skills" id="section">
-            <h2 className="section_header">Skills</h2>
-            <h3 className="section_subheader">Web Development</h3>
+            <h2 className={`section_header${props.theme.color}`}>Skills</h2>
+            <h3 className={`section_subheader${props.theme.color}`} id= 'Web Development'>Web Development</h3>
             <div className="section" id="programingLanguages">
                 {languages.map((language, index) => {
                     return (
@@ -83,12 +83,12 @@ function Skills(props) {
             { largeViewIndex > -1 ?
                 <div className='skillsLargeView'>
                     <div className='skillsLargeView_selector'>
-                        {largeViewIndex -1 > -1 ? <div className='scrollArrowBackground' onClick = {()=>{
+                        {largeViewIndex -1 > -1 ? <div className={`scrollArrowBackground${props.theme.color}`} onClick = {()=>{
                             setlargeViewIndex(largeViewIndex-1)
                         }}><img className='scrollArrowLeft' src={scrollArrow} /></div> : null }
                         <a href={languages[largeViewIndex].url} className = 'skillsLargeViewLink' target="_blank"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt={languages[largeViewIndex].name} />
                         </a>
-                        { largeViewIndex +1 < languages.length ? <div className='scrollArrowBackground' onClick = {()=>{
+                        { largeViewIndex +1 < languages.length ? <div className={`scrollArrowBackground${props.theme.color}`} onClick = {()=>{
                             setlargeViewIndex(largeViewIndex+1)
                         }}><img className='scrollArrowRight' src={scrollArrow} /></div> : null}
                     </div>
@@ -99,8 +99,8 @@ function Skills(props) {
             }
 
             <div className='section' id='skillsOther'>
-                <div className='section_content'>
-                    <h3 className="section_subheader">Other Skills/Experience</h3>
+                <div className='section_content' id = 'Other Skills/Experience'>
+                    <h3 className={`section_subheader${props.theme.color}`}>Other Skills/Experience</h3>
                     <ul className="skills_list">
                         <li className="skill_list--name">Sales</li>
                         <li className="skill_list--name">Point of Sale/Retail</li>
