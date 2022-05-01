@@ -11,48 +11,48 @@ import galleryPhoto2 from '../../assets/photos/self/self_photo1.jpg';
 import galleryPhoto3 from '../../assets/photos/grad/grad_photo1.jpg';
 import galleryPhoto4 from '../../assets/photos/family/fam_photo6.jpg';
 import gmailLogo from '../../assets/logos/gmail_logo.svg';
-import linkedinLogo from '../../assets/logos/linkedin_logo.svg'; 
-const logos = [javascriptLogo,  reactLogo, nodeLogo, html5Logo, postgresql_logo, sassLogo
+import linkedinLogo from '../../assets/logos/linkedin_logo.svg';
+const logos = [javascriptLogo, reactLogo, nodeLogo, html5Logo, postgresql_logo, sassLogo
 ]
 function Home(props) {
     return (
         <div className="Home" id="section">
-            <div className="section" id= 'About Me'>
+            <div className="section" id='About Me'>
                 <div className="section_text" id='aboutText'>
                     <h3 className={`section_header${props.theme.color}`}>About Me</h3>
                     <p className="section_paragraph">
-                        <span className="section_paragraph-greeting">Hi there!</span> My name is John Ogbonna, and I'd like to tell you about myself! I'm a full-stack web developer on the weekdays, and several other things after hours 😎. I'm based in Ottawa, Ontario, but I'm living in Calgary, Alberta right now. I have lots more to show and tell you, <a className="sectionLink" href='/'>learn more about me here!</a>
+                        <span className="section_paragraph-greeting">Hi there!</span> My name is John Ogbonna, and I'd like to tell you about myself! I'm a full-stack web developer on the weekdays, and several other things after hours 😎. I'm based in Ottawa, Ontario, but I'm living in Calgary, Alberta right now. I have lots more to show and tell you, <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href='/'>learn more about me here!</a>
                     </p>
                 </div>
                 <div className="sectionImages">
                     <div className="sectionImageWrapper">
-                        <img className="sectionImage" src={aboutMePic} id='aboutImage'/>
+                        <img className="sectionImage" src={aboutMePic} id='aboutImage' />
                     </div>
                 </div>
             </div>
-            <div className="section" id= 'Skills'>
-                <div className="section_text" id= 'skillsText'>
+            <div className="section" id='Skills'>
+                <div className="section_text" id='skillsText'>
                     <h3 className={`section_header${props.theme.color}`}>Skills</h3>
                     <p className="section_paragraph">
-                        I'm a Full stack Web Developer, proficient with several development frameworks and languages! <a className="sectionLink" href='/'>learn more about my skills here!</a>
+                        I'm a Full stack Web Developer, proficient with several development frameworks and languages! <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href='/Skills'>learn more about my skills here!</a>
                     </p>
                 </div>
-                <div className="sectionImages" id= 'logos'>
+                <div className="sectionImages" id={`logos${props.darkMode ? 'Dark' : ''}`}>
                     {
-                        logos.map(logo=>{
-                          return(
-                            <img className="sectionImage" id='logo' src={logo} />
-                          )  
+                        logos.map(logo => {
+                            return (
+                                <img className="sectionImage" id='logo' src={logo} />
+                            )
                         })
                     }
                 </div>
 
             </div>
-            <div className="section" id = 'Gallery'>
+            <div className="section" id='Gallery'>
                 <div className="section_text">
                     <h3 className={`section_header${props.theme.color}`}>Gallery</h3>
                     <p className="section_paragraph">
-                        There have been many interesting, fun, and hilarious memories I've captured! <a className="sectionLink" href='/'>View the gallery!</a>
+                        There have been many interesting, fun, and hilarious memories I've captured! <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href='/Gallery'>View the gallery!</a>
                     </p>
                 </div>
                 <div className="sectionImages" id='GalleryImages'>
@@ -63,13 +63,13 @@ function Home(props) {
                 </div>
             </div>
             <div className="section" id={`Contact${props.theme.color}`}>
-                <div className="section_text" id= 'Contact'>
+                <div className="section_text" id='Contact'>
                     <h3 className={`section_header${props.theme.color}`} id='ContactHeader' >Contact Me!</h3>
                     <p className="section_paragraph">
-                        Wanna get in touch? <a className="sectionLink" href='/'> Contact me!</a>
+                        Wanna get in touch? <a className={`sectionLink${props.darkMode ? 'dark' : ''}Contact`} href='/Contact'> Contact me!</a>
                     </p>
                 </div>
-                <div className="sectionImages" id= 'contactLogos'>
+                <div className="sectionImages" id='contactLogos'>
                     <img className="sectionImage" id='contactLogo' src={linkedinLogo} />
                     <img className="sectionImage" id='contactLogo' src={gmailLogo} />
                 </div>

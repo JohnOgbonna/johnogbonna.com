@@ -53,23 +53,11 @@ let languages = [
 function Skills(props) {
     let [isLoading, setIsLoading] = useState(true);
     let [largeViewIndex, setlargeViewIndex] = useState(1)
-    useEffect(() => {
-        if (props.scroll) {
-            window.scrollTo(0, props.scroll)
-        }
-        console.log(props.scroll)
-    }, [isLoading])
-    useEffect(() => {
-        return () => {
-            props.setScrollPosition('Skills', window.scrollY)
-            console.log('return', props.scroll,)
-        };
-    }, [])
     return (
         <div className="Skills" id="section">
             <h2 className={`section_header${props.theme.color}`}>Skills</h2>
-            <h3 className={`section_subheader${props.theme.color}`} id= 'Web Development'>Web Development</h3>
-            <div className="section" id="programingLanguages">
+            <h3 className={`section_subheader${props.theme.color}`} id='Web Development'>Web Development</h3>
+            <div className="section" id={`programingLanguages${props.darkMode ? 'Dark' : ''}`}>
                 {languages.map((language, index) => {
                     return (
                         <div className="section_paragraph" id='skillsDisplay'>
@@ -82,14 +70,14 @@ function Skills(props) {
             </div>
             { largeViewIndex > -1 ?
                 <div className='skillsLargeView'>
-                    <div className='skillsLargeView_selector'>
-                        {largeViewIndex -1 > -1 ? <div className={`scrollArrowBackground${props.theme.color}`} onClick = {()=>{
-                            setlargeViewIndex(largeViewIndex-1)
-                        }}><img className='scrollArrowLeft' src={scrollArrow} /></div> : null }
-                        <a href={languages[largeViewIndex].url} className = 'skillsLargeViewLink' target="_blank"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt={languages[largeViewIndex].name} />
+                    <div className={`skillsLargeView_selector${props.darkMode ? 'Dark' : ''}`}>
+                        {largeViewIndex - 1 > -1 ? <div className={`scrollArrowBackground${props.theme.color}`} onClick={() => {
+                            setlargeViewIndex(largeViewIndex - 1)
+                        }}><img className='scrollArrowLeft' src={scrollArrow} /></div> : null}
+                        <a href={languages[largeViewIndex].url} className='skillsLargeViewLink' target="_blank"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt={languages[largeViewIndex].name} />
                         </a>
-                        { largeViewIndex +1 < languages.length ? <div className={`scrollArrowBackground${props.theme.color}`} onClick = {()=>{
-                            setlargeViewIndex(largeViewIndex+1)
+                        {largeViewIndex + 1 < languages.length ? <div className={`scrollArrowBackground${props.theme.color}`} onClick={() => {
+                            setlargeViewIndex(largeViewIndex + 1)
                         }}><img className='scrollArrowRight' src={scrollArrow} /></div> : null}
                     </div>
                     <p className='skillsLargeViewDescription'>{languages[largeViewIndex].description}</p>
@@ -99,14 +87,14 @@ function Skills(props) {
             }
 
             <div className='section' id='skillsOther'>
-                <div className='section_content' id = 'Other Skills/Experience'>
+                <div className='section_content' id='Other Skills/Experience'>
                     <h3 className={`section_subheader${props.theme.color}`}>Other Skills/Experience</h3>
                     <ul className="skills_list">
                         <li className="skill_list--name">Sales</li>
                         <li className="skill_list--name">Point of Sale/Retail</li>
                         <li className="skill_list--name">Data Entry (Microsoft Office)</li>
                     </ul>
-                    <h4 className='resume'>Have a look at my resume <a classname='resume_link' href={resume} download='Resume'>Here!</a></h4>
+                    <h4 className='resume'>Have a look at my resume <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href={resume} download='Resume'>Here!</a></h4>
 
                 </div>
             </div>

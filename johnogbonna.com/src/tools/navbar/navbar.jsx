@@ -27,7 +27,7 @@ function NavBar(props) {
     },
     {
       name: "Contact",
-      sections: [],
+      sections: ["Email", "Linkedin", "Github"],
       linkSection: true
     }
   ]
@@ -35,6 +35,11 @@ function NavBar(props) {
   let [hovering, setHovering] = useState(false);
   let [themeHovering, setThemeHovering] = useState(false);
   let navigate = useNavigate()
+  let toggleDarkMode = () => {
+    if (!props.theme.dark) props.changeTheme(props.theme.color, 'Auto');
+    else if (props.theme.dark === 'Auto') props.changeTheme(props.theme.color, true);
+    else props.changeTheme(props.theme.color, false);
+  }
   return (
     <div className={`NavBar${props.theme.color}`} onMouseLeave={() => {
       setHovering(false);
@@ -43,10 +48,11 @@ function NavBar(props) {
       <ul className="links">
         {navItems.map(link => {
           return (
-            <div className='links__wrapper' onMouseEnter={() => { setHovering(link.name)
+            <div className='links__wrapper' onMouseEnter={() => {
+              setHovering(link.name)
               setThemeHovering(false);
             }}>
-              <Link to={`/${link.name}`} style={{ textDecoration: 'none' }}><li className="links__item" id="homeNavLink" onClick={() => props.changeSelection(link.name)}>{link.name}</li>
+              <Link to={`/${link.name}`} style={{ textDecoration: 'none' }}><li className="links__item" id="homeNavLink" onClick={() => props.changeSelection(link.name)}>{link.name === 'Home' ? 'Overview' : link.name}</li>
               </Link>
               {link.sections.length > 0 ?
                 <ul className={`links__item-sections${hovering === link.name ? 'Active' : ''}${props.theme.color}`}>
@@ -58,7 +64,7 @@ function NavBar(props) {
                             props.changeSelection(link.name);
                             if (link.linkSection) {
                               setTimeout(() => {
-                                navigate( `/${link.name}`);
+                                navigate(`/${link.name}`);
                                 window.location.hash = section;
                               }, 100);
                             }
@@ -83,10 +89,10 @@ function NavBar(props) {
               {
                 themes.map(color => {
                   return (
-                    <div className='theme_wrapper'onClick={() => {
+                    <div className='theme_wrapper' onClick={() => {
                       props.changeTheme(color, props.theme.dark)
-                   }
-                   }>
+                    }
+                    }>
                       <li className='links__item-section' id='themeColor' >{color}</li>
                       <div className='links__item-shade' id={`shade${color}`}></div>
                     </div>
@@ -94,8 +100,8 @@ function NavBar(props) {
                 })
               }
               <li className='links__item-section' id='themeColor' onClick={() => {
-                props.changeTheme(props.theme.color, !props.theme.dark)
-              }}>{`Dark Mode: ${props.theme.dark ? 'ON' : 'OFF'}`}</li>
+                toggleDarkMode()
+              }}>{`Dark Mode: ${props.theme.dark === 'Auto' ? 'AUTO' : props.theme.dark ? 'ON' : 'OFF'}`}</li>
             </ul>
           </div>
         </li>

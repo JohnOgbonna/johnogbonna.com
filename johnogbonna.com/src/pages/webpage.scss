@@ -5,15 +5,40 @@
     width: 100%; 
     height: 50%; 
 
-} 
-.Webpage{ 
+}
+.Webpage, .WebpageDark{ 
   width: 100%;
+  height: 100%;
   @include desktop{
       display: flex;
       flex-direction: column;
       align-items: center;
   }
-    
 } 
-
-    
+.WebpageDark{ 
+  background-color: rgba(22, 21, 21, 0.89);
+  padding-bottom: 3rem;
+} 
+.displaySection, .displaySectionDark{ 
+  margin: .5rem 1rem;
+  padding: 0 1rem 2rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  line-height: 1.5;
+  background-color: white;
+  @include tablet{
+      margin: 1rem 4rem;
+  }
+  @include desktop{
+      margin: 1rem 6rem;
+      max-width: 1400px;
+      box-sizing: border-box;
+      width: 95%;
+  }
+ &Dark{
+         background-color: rgba(49, 49, 49, 0.904);
+         color: white;
+         box-shadow: 1px whitesmoke;
+         font-weight: bold;
+     }
+ 
+}

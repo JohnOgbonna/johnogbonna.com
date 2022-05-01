@@ -2,7 +2,7 @@ import './section_styles.scss'
 import fam_photo8 from '../../assets/photos/family/fam_photo8.jpg'
 import fam_photo9 from '../../assets/photos/family/fam_photo9.jpg'
 import grad_photoHS1 from '../../assets/photos/grad/grad_photoHS1.jpg'
-import other_pic1 from '../../assets/photos/other/other_pic1.jpeg'
+import other_photo1 from '../../assets/photos/other/other_photo1.jpeg'
 import grad_photo4 from '../../assets/photos/grad/grad_photo4.jpg'
 import grad_photo1 from '../../assets/photos/grad/grad_photo1.jpg'
 import self_photo8 from '../../assets/photos/self/self_photo8.jpg'
@@ -11,21 +11,6 @@ import { useEffect } from "react";
 import { useState } from 'react';
 
 function About(props) {
-
-    useEffect(() => {
-        if (props.scroll) {
-            window.scrollTo(0, props.scroll)
-        }
-        console.log(props.scroll)
-    }, [])
-    // useEffect(()=> {
-    //     return () => {
-    //         props.setScrollPosition('About', window.scrollY) 
-    //         console.log('return', props.scroll, )
-    //     };
-    // }, []) 
-
-
     return (
         <div className="About" id="section">
             {/* <h2 className="mainSectionHeader">About Me</h2> */}
@@ -67,7 +52,7 @@ function About(props) {
                 <div className="section_paragraphWrapper">
                     <div className="section_paragraph-images" id='middleImage'>
                         <figure className="section_paragraph-image--about">
-                            <img className="sectionImage" id="aboutImageMiddle" src={other_pic1} />
+                            <img className="sectionImage" id="aboutImageMiddle" src={other_photo1} />
                             <figcaption className={`section_paragraph-caption${props.theme.color}`}>My group and I holding our final capstone project. We made a model house with a simulated security system that could be conrolled remotely using a cellphone app.  </figcaption>
                         </figure>
                     </div>
@@ -80,12 +65,12 @@ function About(props) {
                             <img className="sectionImage" id="aboutImage" src={grad_photo4} />
                             <figcaption className={`section_paragraph-caption${props.theme.color}`}>Walking the stage during my graduation ceremony</figcaption>
                         </figure>
-                        </div>
                     </div>
-                    <figure className="section_paragraph-image--about">
-                        <img className="sectionImage" id="aboutImage" src={grad_photo1} />
-                        <figcaption className={`section_paragraph-caption${props.theme.color}`}>Posing for the camera with my (then) new university degree</figcaption>
-                    </figure>
+                </div>
+                <figure className="section_paragraph-image--about">
+                    <img className="sectionImage" id="aboutImage" src={grad_photo1} />
+                    <figcaption className={`section_paragraph-caption${props.theme.color}`}>Posing for the camera with my (then) new university degree</figcaption>
+                </figure>
 
             </div>
             <div className="section" id="After University">
@@ -106,11 +91,11 @@ function About(props) {
                 <div className="section_content">
                     <h3 className={`section_header${props.theme.color}`}>Learning Software Development</h3>
                     <div className="section_paragraphWrapper" id="brainstation">
-                        <p className="section_paragraph" id='aboutParagraphLogo'>As the lockdowns extended further, the situation gave me time to think about what I wanted to do long-term. I realized that although university was a valuable life experience, I wasn’t necessarily interested in working as an electrical engineer. I remembered that I took a university course that involved coding in C, and I actually enjoyed the process of creating new software programs. In addition to this, I became aware of the opportunities in software development, particularly web development. I spoke to my cousin, who himself had learned software development over the recent years, and we came to the conclusion that the current lockdown situation provided me with a great opportunity to further learn how to code. I decided to attend BrainStation’s Web-Development bootcamp, offered remotely due to the lockdown. In a few months, I learned several web development skills and frameworks, ranging from HTML and CSS to collaborative development using Jira and Github and more! <a href="/">Learn more about my skills here!</a></p>
+                        <p className="section_paragraph" id='aboutParagraphLogo'>As the lockdowns extended further, the situation gave me time to think about what I wanted to do long-term. I realized that although university was a valuable life experience, I wasn’t necessarily interested in working as an electrical engineer. I remembered that I took a university course that involved coding in C, and I actually enjoyed the process of creating new software programs. In addition to this, I became aware of the opportunities in software development, particularly web development. I spoke to my cousin, who himself had learned software development over the recent years, and we came to the conclusion that the current lockdown situation provided me with a great opportunity to further learn how to code. I decided to attend BrainStation’s Web-Development bootcamp, offered remotely due to the lockdown. In a few months, I learned several web development skills and frameworks, ranging from HTML and CSS to collaborative development using Jira and Github and more! <a href="/Skills" className={`sectionLink${props.darkMode ? 'dark' : ''}`}>Learn more about my skills here!</a></p>
                         <div className="section_paragraph-images">
                             <figure className="section_paragraph-image--about">
-                                <img className="sectionImage" id="aboutImageLogo" src={brainstation_logo} />
-                                <figcaption className={`section_paragraph-caption${props.theme.color}`}>BrainStation's logo. <a href="/">Visit BrainStations' website!</a></figcaption>
+                                <img className="sectionImage" id={`aboutImageLogo${props.darkMode ? 'Dark' : ''}`} src={brainstation_logo} />
+                                <figcaption className={`section_paragraph-caption${props.theme.color}`}>BrainStation's logo. <a href="https://brainstation.io/" className={`sectionLink${props.darkMode ? 'dark' : ''}`}>Visit BrainStations' website!</a></figcaption>
                             </figure>
                         </div>
                     </div>

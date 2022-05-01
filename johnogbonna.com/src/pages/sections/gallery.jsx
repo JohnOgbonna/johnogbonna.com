@@ -21,10 +21,14 @@ import self_photo5 from '../../assets/photos/self/self_photo5.JPG'
 import self_photo6 from '../../assets/photos/self/self_photo6.jpg'
 import self_photo7 from '../../assets/photos/self/self_photo7.jpg'
 import self_photo8 from '../../assets/photos/self/self_photo8.jpg'
-import other_pic1 from '../../assets/photos/other/other_pic1.jpeg'
+import self_photo9 from '../../assets/photos/self/self_photo9.jpg'
+import other_photo1 from '../../assets/photos/other/other_photo1.jpeg'
+import other_photo2 from '../../assets/photos/other/other_photo2.jpg'
+import other_photo3 from '../../assets/photos/other/other_photo3.jpg'
 import dropDownArrow from '../../tools/other/scroll_arrow.svg'
 import { useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
+import closeButton from '../../tools/other/closeIcon.svg';
 
 function Gallery(props) {
     let categories = ['All', 'Grad', 'Family', 'Self', 'Other']
@@ -48,6 +52,15 @@ function Gallery(props) {
     }
 
     let photos = [
+
+        {
+            picture: self_photo9,
+            category: 'Self'
+        },
+        {
+            picture: self_photo7,
+            category: 'Self'
+        },
         {
             picture: fam_photo1,
             category: 'Family'
@@ -55,6 +68,22 @@ function Gallery(props) {
         {
             picture: fam_photo2,
             category: 'Family'
+        },
+        {
+            picture: self_photo2,
+            category: 'Self'
+        },
+        {
+            picture: self_photo3,
+            category: 'Self'
+        },
+        {
+            picture: other_photo3,
+            category: 'Other'
+        },
+        {
+            picture: self_photo8,
+            category: 'Self'
         },
         {
             picture: fam_photo3,
@@ -109,14 +138,6 @@ function Gallery(props) {
             category: 'Self'
         },
         {
-            picture: self_photo2,
-            category: 'Self'
-        },
-        {
-            picture: self_photo3,
-            category: 'Self'
-        },
-        {
             picture: self_photo4,
             category: 'Self'
         },
@@ -129,17 +150,14 @@ function Gallery(props) {
             category: 'Self'
         },
         {
-            picture: self_photo7,
-            category: 'Self'
-        },
-        {
-            picture: self_photo8,
-            category: 'Self'
-        },
-        {
-            picture: other_pic1,
+            picture: other_photo1,
             category: 'Other'
         },
+        {
+            picture: other_photo2,
+            category: 'Other'
+        },
+
     ]
     let gradPhotos = photos.filter(photo => photo.category === 'Grad')
     let familyPhotos = photos.filter(photo => photo.category === 'Family')
@@ -155,24 +173,24 @@ function Gallery(props) {
                 </div>
             </div>
             <ul className={`Gallery__selector-box${selecting ? 'Active' : ''}`}>
-            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
                     switchCategory('All')
                     navigate('/Gallery/All');
                 }}>All Photos</li>
-            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
                     switchCategory('Grad')
                     navigate('/Gallery/Grad');
                 }}>Grad Photos</li>
-            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
                     switchCategory('Family')
                     navigate('/Gallery/Family');
                 }}>Family Photos</li>
-            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
                     switchCategory('Self')
                     navigate('/Gallery/Self')
                 }
                 }>Self Photos</li>
-            <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
+                <li className={`Gallery__selector-box--item${props.theme.color}`} onClick={() => {
                     switchCategory('Other')
                     navigate('/Gallery/Other')
                 }
@@ -215,7 +233,7 @@ function Gallery(props) {
                         )
                     })
                     : null}
-                    {category === 'Other' ?
+                {category === 'Other' ?
                     otherPhotos.map((image, index) => {
                         return (
                             <div className='photoBox'>
@@ -238,10 +256,14 @@ function Gallery(props) {
                             disableLargeView()
                         }
                     }}>
+
                         {largeViewIndex - 1 > -1 ?
                             <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}><img id='galleryArrowLeft' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex - 1)} />
                             </div>
                             : null}
+                        <div className='largeView__close' onClick={(e) => {
+                            disableLargeView()
+                        }}><img className='largeView__close-icon' src={closeButton} alt='close' /></div>
                         <div className='largeView__picture-background'>
                             <img className='largeView__picture-photo' src={largeViewPhotos[largeViewIndex].picture} alt='picture' />
                         </div>

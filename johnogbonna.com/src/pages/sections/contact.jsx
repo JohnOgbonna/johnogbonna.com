@@ -1,19 +1,19 @@
 import gmail_logo from '../../assets/logos/gmail_logo.svg'
-import linkedin_logo from '../../assets/logos/linkedin_logo.svg' 
+import linkedin_logo from '../../assets/logos/linkedin_logo.svg'
 import github_logo from '../../assets/logos/github_logo.svg'
 
 let sections = [
     {
         name: 'Email',
         icon: gmail_logo,
-        link: 'mail:tojohnny.ogb@gmail.com.com',
+        link: 'mailto:johnny.ogb@gmail.com',
         text: 'johnny.ogb@gmail.com'
     },
     {
         name: 'Linkedin',
         icon: linkedin_logo,
-        link: 'www.linkedin.com/in/johnogbonna',
-        text: 'linkedin.com/in/johnogbonna'
+        link: 'https://linkedin.com/in/johnogbonna',
+        text: "linkedin.com/in/johnogbonna"
     },
     {
         name: 'Github',
@@ -24,19 +24,21 @@ let sections = [
 
 ]
 
-function Contact() {
+function Contact(props) {
     return (
         <div className="Contact" id="section">
-            <h2 className='section_header'>Contact Me!</h2>
+            <h2 className={`section_header${props.theme.color}`}>Contact Me!</h2>
             <div className='Contact_methods'>
                 {sections.map(section => {
                     return (
-                        < div className='Contact_methods--section' >
-                            <h3 className='Contact_methods--section--header'>{section.name}</h3>
-                            <div className='Contact_methods--section--line2'>
-                                <img className='Contact_methods--section--line2--image'src={section.icon} />
-                                <p className='Contact_methods--section--line2--text'><a href={section.link}>{section.text}</a></p>
+                        < div className={`Contact_methods-section${props.theme.color}`} onClick = {()=>{
+                            window.open(section.link, '_blank')
+                        }}>
+                            <div className={`Contact_methods-section--line1`}>
+                                <img className='Contact_methods-section--line1---image' src={section.icon} />
+                                <h3 className='Contact_methods-section--header' id = {section.name}>{section.name}</h3>
                             </div>
+                            <p className='Contact_methods-section--text'>{section.text}</p>
                         </div>
                     )
                 })}

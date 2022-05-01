@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import coverPhoto from '../assets/photos/self/coverphoto.JPG';
 import './webpage.scss';
 import NavBar from '../tools/navbar/navbar';
@@ -15,27 +15,26 @@ function Webpage(props) {
     let savedTheme = localStorage.getItem('theme') ? JSON.parse(localStorage.getItem('theme')) : {};
     let [theme, setTheme] = useState({
         color: savedTheme.color ? savedTheme.color : 'Red',
-        dark: savedTheme.dark ? savedTheme.dark : false,
+        dark: savedTheme.dark ? savedTheme.dark : 'Auto',
     });
     function changeTheme(color, dark) {
         setTheme({ color: color, dark: dark })
         localStorage.setItem('theme', JSON.stringify({ color: color, dark: dark }))
     }
-    let [scrollPosition, scrollPositionSet] = useState({
-        About: null,
-        Skills: null,
-        Contact: null,
+    let [darkMode, setDarkMode] = useState(
+        (savedTheme.dark === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) || savedTheme.dark === true ? true : false
+    )
+    useEffect(() => {
+        if (savedTheme.dark === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches || savedTheme.dark === true) {
+            setDarkMode(true);
+        }
+        else {
+            setDarkMode(false);
+        }
+    }, [theme])
 
-    })
-    const setScrollPosition = (section, value) => {
-        scrollPositionSet({
-            ...scrollPosition,
-            [section]: value
-        })
-        console.log(scrollPosition)
-    }
     return (
-        <div className="Webpage">
+        <div className={`Webpage${darkMode ? 'Dark' : ''}`}>
             <NavBarMobile
                 changeSelection={setSection}
                 section={section}
@@ -47,49 +46,46 @@ function Webpage(props) {
                 changeTheme={changeTheme} />
 
             {section === "Home" ?
-                <div className="displaySection">
+                <div className={`displaySection${darkMode ? 'Dark' : ''}`}>
                     <Home
-                        theme={theme} />
+                        theme={theme}
+                        darkMode={darkMode} />
                 </div>
                 :
                 null}
             {section === "About" ?
-                <div className="displaySection">
+                <div className={`displaySection${darkMode ? 'Dark' : ''}`}>
                     <About
-                        scroll={scrollPosition.About}
-                        setScrollPosition={setScrollPosition}
-                        theme={theme} />
+                        theme={theme}
+                        darkMode={darkMode} />
 
                 </div>
                 :
                 null}
 
             {section === "Skills" ?
-                <div className="displaySection">
+                <div className={`displaySection${darkMode ? 'Dark' : ''}`}>
                     <Skills
-                        scroll={scrollPosition.Skills}
-                        setScrollPosition={setScrollPosition}
-                        theme={theme} />
+                        theme={theme}
+                        darkMode={darkMode} />
                 </div>
                 :
                 null}
 
             {section === "Gallery" ?
-                <div className="displaySection">
+                <div className={`displaySection${darkMode ? 'Dark' : ''}`}>
                     <Gallery
-                        scroll={scrollPosition.Skills}
-                        setScrollPosition={setScrollPosition}
-                        theme={theme} />
+                        theme={theme}
+                        darkMode={darkMode} />
                 </div>
                 :
                 null}
 
             {section === "Contact" ?
-                <div className="displaySection">
+                <div className={`displaySection${darkMode ? 'Dark' : ''}`}>
                     <Contact
-                        scroll={scrollPosition.Contact}
-                        setScrollPosition={setScrollPosition}
-                        theme={theme} />
+                        theme={theme}
+                        darkMode={darkMode} />
                 </div>
                 :
                 null}

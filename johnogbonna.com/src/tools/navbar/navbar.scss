@@ -13,7 +13,6 @@ ul{
     margin: 0;
     @include desktop{
         max-width: 1290px;
-        padding: 0;
         align-self: center;
         margin: 0 auto;
     }
@@ -99,8 +98,6 @@ ul{
                     }
                 }   
             }
-
-            
         }
         &-section{
             position: relative;
@@ -178,7 +175,13 @@ ul{
     :last-child{ 
         margin-right: 0;
     }
-} 
+}
+.section{
+    &Link{
+        color: whitesmoke;
+        font-weight: bolder;
+    }
+}
 .NavBar{
     &Red, &Blue, &Sky, &Purple, &Green, &Grey{
         display: none;
@@ -192,7 +195,7 @@ ul{
         padding: .5rem 1rem ; 
         position: sticky; 
         top:0px;
-        z-index: 3;
+        z-index: 10;
     }
     @include desktop{
         width: 100%;
@@ -207,7 +210,7 @@ ul{
         justify-content: flex-end;
         position: sticky; 
         top:0;
-        z-index: 3;
+        z-index: 10;
         font-family: head;
         @include tablet{ 
             display: none;

@@ -11,6 +11,11 @@ function NavBarMobile(props) {
     let [dropdown, setDropdown] = useState({});
     let [selectingTheme, setSelectingTheme] = useState(false);
     let navigate = useNavigate();
+    let toggleDarkMode = () => {
+        if (!props.theme.dark) props.changeTheme(props.theme.color, 'Auto');
+        else if (props.theme.dark === 'Auto') props.changeTheme(props.theme.color, true);
+        else props.changeTheme(props.theme.color, false);
+    }
     const navItems = [
         {
             name: "Home",
@@ -34,7 +39,7 @@ function NavBarMobile(props) {
         },
         {
             name: "Contact",
-            sections: [],
+            sections: ["Email", "Linkedin", "Github"],
             linkSection: true
         }
     ]
@@ -60,8 +65,8 @@ function NavBarMobile(props) {
                                         props.changeSelection(link.name)
                                         setSelecting(false)
                                     }}
-                                >{link.name}</div>
-                                <img className={`links__item-arrow${dropdown[link.name] ? 'Active': ''}`} src={scroll_arrow}
+                                >{link.name === 'Home' ? 'Overview' : link.name}</div>
+                                <img className={`links__item-arrow${dropdown[link.name] ? 'Active' : ''}`} src={scroll_arrow}
                                     onClick={() => {
                                         setDropdown({
                                             ...dropdown,
@@ -83,6 +88,7 @@ function NavBarMobile(props) {
                                                                     navigate(`/${link.name}`);
                                                                     window.location.hash = section;
                                                                 }, 100);
+                                                                setSelecting(false)
                                                             }
                                                             else if (link.name = 'Gallery') {
                                                                 window.location.href = (`/Gallery/${section}`);
@@ -99,25 +105,30 @@ function NavBarMobile(props) {
                         )
                     })}
                     <li className="links__item-wrapper" id='themeMobile' onClick={() => { setSelectingTheme(!selectingTheme) }}>
-                        <div className = 'links__item-wrapper'>
+                        <div className='links__item-wrapper'>
                             <div className="links__item" id="homeNavLink" style={{ textDecoration: 'none' }}
                             >Theme</div>
-                            <img className={`links__item-arrow${selectingTheme ? 'Active': ''}`} src={scroll_arrow} />
+                            <img className={`links__item-arrow${selectingTheme ? 'Active' : ''}`} src={scroll_arrow} />
                         </div>
                         <ul className={`links__item-sectionsMobile${selectingTheme ? 'Active' : ''}${props.theme.color}`} id='mobileThemes'>
                             {
                                 themes.map(color => {
                                     return (
-                                        <div className='theme_wrapper' onClick={() => {
+                                        <li className='theme_wrapper' onClick={() => {
                                             props.changeTheme(color, props.theme.dark)
                                         }
                                         }>
-                                            <li className='links__item-section' id='themeColor' >{color}</li>
+                                            <p className='links__item-section' id='themeColor' >{color}</p>
                                             <div className='links__item-shade' id={`shade${color}`}></div>
-                                        </div>
+                                        </li>
                                     )
                                 })
                             }
+                            <li className='theme_wrapper' onClick={() => {
+                                toggleDarkMode()
+                            }}>
+                                <p className='links__item-section' id='themeColor'>{`Dark Mode : ${props.theme.dark === 'Auto' ? 'AUTO' : props.theme.dark ? 'ON' : 'OFF'}`}</p>
+                            </li>
                         </ul>
                     </li>
                 </ul>
