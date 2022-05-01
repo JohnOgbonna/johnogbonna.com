@@ -191,7 +191,7 @@
   width: calc(100% / 3);
   background-color: black;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .Gallery {
   &__photos {
@@ -199,8 +199,9 @@
     flex-wrap: wrap;
     justify-content: center;
     min-height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: calc(100% + 2rem);
+    position: relative;
+    right: 1rem;
   }
   &__selector {
     display: flex;

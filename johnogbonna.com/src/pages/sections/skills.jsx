@@ -1,4 +1,3 @@
-import gmail_logo from '../../assets/logos/gmail_logo.svg';
 import html5_logo from '../../assets/logos/html5_logo.svg';
 import javascript_logo from '../../assets/logos/javascript_logo.svg'
 import nodejs_logo from '../../assets/logos/nodejs_logo.svg';
@@ -6,7 +5,6 @@ import postgresql_logo from '../../assets/logos/postgresql_logo.svg';
 import react_logo from '../../assets/logos/react_logo.svg';
 import sass_logo from '../../assets/logos/sass_logo.svg';
 import resume from '../../assets/documents/Resume2021.pdf';
-import { useEffect } from "react";
 import { useState } from 'react';
 import scrollArrow from '../../tools/other/scroll_arrow.svg'
 
@@ -51,7 +49,6 @@ let languages = [
 ]
 
 function Skills(props) {
-    let [isLoading, setIsLoading] = useState(true);
     let [largeViewIndex, setlargeViewIndex] = useState(1)
     return (
         <div className="Skills" id="section">
@@ -61,7 +58,7 @@ function Skills(props) {
                 {languages.map((language, index) => {
                     return (
                         <div className="section_paragraph" id='skillsDisplay'>
-                            <img src={language.image} onClick={() => {
+                            <img src={language.image} alt='selected display' onClick={() => {
                                 setlargeViewIndex(index)
                             }} />
                         </div>)
@@ -73,12 +70,12 @@ function Skills(props) {
                     <div className={`skillsLargeView_selector${props.darkMode ? 'Dark' : ''}`}>
                         {largeViewIndex - 1 > -1 ? <div className={`scrollArrowBackground${props.theme.color}`} onClick={() => {
                             setlargeViewIndex(largeViewIndex - 1)
-                        }}><img className='scrollArrowLeft' src={scrollArrow} /></div> : null}
-                        <a href={languages[largeViewIndex].url} className='skillsLargeViewLink' target="_blank"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt={languages[largeViewIndex].name} />
+                        }}><img className='scrollArrowLeft' alt='left arrow' src={scrollArrow} /></div> : null}
+                        <a href={languages[largeViewIndex].url} className='skillsLargeViewLink' target="_blank" rel="noreferrer"><img className='skillsLargeViewImage' src={languages[largeViewIndex].image} alt='selected display' />
                         </a>
                         {largeViewIndex + 1 < languages.length ? <div className={`scrollArrowBackground${props.theme.color}`} onClick={() => {
                             setlargeViewIndex(largeViewIndex + 1)
-                        }}><img className='scrollArrowRight' src={scrollArrow} /></div> : null}
+                        }}><img className='scrollArrowRight' src={scrollArrow} alt='right arrow' /></div> : null}
                     </div>
                     <p className='skillsLargeViewDescription'>{languages[largeViewIndex].description}</p>
                 </div>

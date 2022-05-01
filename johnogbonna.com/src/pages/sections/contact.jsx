@@ -31,12 +31,12 @@ function Contact(props) {
             <div className='Contact_methods'>
                 {sections.map(section => {
                     return (
-                        < div className={`Contact_methods-section${props.theme.color}`} onClick = {()=>{
+                        < div className={`Contact_methods-section${props.theme.color}`} onClick={() => {
                             window.open(section.link, '_blank')
                         }}>
                             <div className={`Contact_methods-section--line1`}>
-                                <img className='Contact_methods-section--line1---image' src={section.icon} />
-                                <h3 className='Contact_methods-section--header' id = {section.name}>{section.name}</h3>
+                                <img className='Contact_methods-section--line1---image' src={section.icon} alt={section.name} />
+                                <h3 className='Contact_methods-section--header' id={section.name}>{section.name}</h3>
                             </div>
                             <p className='Contact_methods-section--text'>{section.text}</p>
                         </div>

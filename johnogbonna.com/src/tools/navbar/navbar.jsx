@@ -68,7 +68,7 @@ function NavBar(props) {
                                 window.location.hash = section;
                               }, 100);
                             }
-                            else if (link.name = 'Gallery') {
+                            else if (link.name === 'Gallery') {
                               window.location.href = (`/Gallery/${section}`);
                               window.location.hash = 'galleryHeader';
                             }

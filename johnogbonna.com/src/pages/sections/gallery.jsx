@@ -167,9 +167,9 @@ function Gallery(props) {
     return (
         <div className="Gallery" id="section">
             <h2 className={`section_header${props.theme.color}`} >Gallery</h2>
-            <div className='Gallery__selector'>
+            <div className='Gallery__selector' onClick={() => setSelecting(!selecting)}>
                 <h2 className={`section_header${props.theme.color}`} id='galleryHeader'>{`${category} Photos`}</h2>
-                <div className={`scrollArrowBackground${props.theme.color}`} id='galleryArrowBackground'> <img className={'mainSectionArrow'} id={`galleryArrow${selecting ? 'Expanded' : ''}`} src={dropDownArrow} alt='dropDownArrow' onClick={() => setSelecting(!selecting)} />
+                <div className={`scrollArrowBackground${props.theme.color}`} id='galleryArrowBackground'> <img className={'mainSectionArrow'} id={`galleryArrow${selecting ? 'Expanded' : ''}`} src={dropDownArrow} alt='dropDownArrow' />
                 </div>
             </div>
             <ul className={`Gallery__selector-box${selecting ? 'Active' : ''}`}>
@@ -201,7 +201,7 @@ function Gallery(props) {
                     photos.map((image, index) => {
                         return (
                             <div className='photoBox'>
-                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(photos, index)} />
+                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(photos, index)} alt='all display' />
                             </div>
                         )
                     })
@@ -210,7 +210,7 @@ function Gallery(props) {
                     gradPhotos.map((image, index) => {
                         return (
                             <div className='photoBox'>
-                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(gradPhotos, index)} />
+                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(gradPhotos, index)} alt='grad display' />
                             </div>
                         )
                     })
@@ -219,7 +219,7 @@ function Gallery(props) {
                     familyPhotos.map((image, index) => {
                         return (
                             <div className='photoBox'>
-                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(familyPhotos, index)} />
+                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(familyPhotos, index)} alt='family display' />
                             </div>
                         )
                     })
@@ -228,7 +228,7 @@ function Gallery(props) {
                     selfPhotos.map((image, index) => {
                         return (
                             <div className='photoBox'>
-                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(selfPhotos, index)} />
+                                <img className='photogrid__photo' src={image.picture} alt='self display' onClick={() => setupLargeView(selfPhotos, index)} />
                             </div>
                         )
                     })
@@ -237,7 +237,7 @@ function Gallery(props) {
                     otherPhotos.map((image, index) => {
                         return (
                             <div className='photoBox'>
-                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(otherPhotos, index)} />
+                                <img className='photogrid__photo' src={image.picture} onClick={() => setupLargeView(otherPhotos, index)} alt='other display' />
                             </div>
                         )
                     })
@@ -258,18 +258,18 @@ function Gallery(props) {
                     }}>
 
                         {largeViewIndex - 1 > -1 ?
-                            <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}><img id='galleryArrowLeft' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex - 1)} />
+                            <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}><img id='galleryArrowLeft' src={dropDownArrow} alt='arrow right' onClick={() => setLargeViewIndex(largeViewIndex - 1)} />
                             </div>
                             : null}
                         <div className='largeView__close' onClick={(e) => {
                             disableLargeView()
                         }}><img className='largeView__close-icon' src={closeButton} alt='close' /></div>
                         <div className='largeView__picture-background'>
-                            <img className='largeView__picture-photo' src={largeViewPhotos[largeViewIndex].picture} alt='picture' />
+                            <img className='largeView__picture-photo' src={largeViewPhotos[largeViewIndex].picture} alt='selected display' />
                         </div>
                         {largeViewIndex + 1 < largeViewPhotos.length ?
                             <div className='scrollArrowBackground' id={`galleryArrowBackgroundLarge${props.theme.color}`}>
-                                <img id='galleryArrowRight' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex + 1)} />
+                                <img id='galleryArrowRight' alt='arrow right' src={dropDownArrow} onClick={() => setLargeViewIndex(largeViewIndex + 1)} />
                             </div>
                             : null}
                     </div>

@@ -26,7 +26,7 @@ function Home(props) {
                 </div>
                 <div className="sectionImages">
                     <div className="sectionImageWrapper">
-                        <img className="sectionImage" src={aboutMePic} id='aboutImage' />
+                        <img className="sectionImage" src={aboutMePic} id='aboutImage' alt='bio display' />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ function Home(props) {
                     {
                         logos.map(logo => {
                             return (
-                                <img className="sectionImage" id='logo' src={logo} />
+                                <img className="sectionImage" id='logo' src={logo} alt='logo' />
                             )
                         })
                     }
@@ -56,10 +56,10 @@ function Home(props) {
                     </p>
                 </div>
                 <div className="sectionImages" id='GalleryImages'>
-                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto1} alt='gallery picture' />
-                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto2} alt='gallery picture' />
-                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto3} alt='gallery picture' />
-                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto4} alt='gallery picture' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto1} alt='gallery display' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto2} alt='gallery display' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto3} alt='gallery display' />
+                    <img className="sectionImage" id='GalleryPic' src={galleryPhoto4} alt='gallery display' />
                 </div>
             </div>
             <div className="section" id={`Contact${props.theme.color}`}>
@@ -70,8 +70,8 @@ function Home(props) {
                     </p>
                 </div>
                 <div className="sectionImages" id='contactLogos'>
-                    <img className="sectionImage" id='contactLogo' src={linkedinLogo} />
-                    <img className="sectionImage" id='contactLogo' src={gmailLogo} />
+                    <img className="sectionImage" id='contactLogo' src={linkedinLogo} alt='linkedin logo' />
+                    <img className="sectionImage" id='contactLogo' src={gmailLogo} alt='gmail logo' />
                 </div>
             </div>
 

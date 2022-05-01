@@ -47,7 +47,7 @@ function NavBarMobile(props) {
     return (
         <div className={`NavBarMobile${props.theme.color}`}>
             <div className="NavBarMobile__line1" onClick={() => setSelecting(!selecting)}>
-                <img className="NavBarMobile__menu" src={selecting ? closeButton : menuButton} />
+                <img className="NavBarMobile__menu" src={selecting ? closeButton : menuButton} alt='menu button' />
                 <h2 className="NavBarMobile__header">{props.section}</h2>
             </div>
             <div className={`linksWrapper${selecting ? 'Active' : 'Hidden'}`} onClick={(e) => {
@@ -66,7 +66,7 @@ function NavBarMobile(props) {
                                         setSelecting(false)
                                     }}
                                 >{link.name === 'Home' ? 'Overview' : link.name}</div>
-                                <img className={`links__item-arrow${dropdown[link.name] ? 'Active' : ''}`} src={scroll_arrow}
+                                <img className={`links__item-arrow${dropdown[link.name] ? 'Active' : ''}`} src={scroll_arrow} alt='dropdown'
                                     onClick={() => {
                                         setDropdown({
                                             ...dropdown,
@@ -90,7 +90,7 @@ function NavBarMobile(props) {
                                                                 }, 100);
                                                                 setSelecting(false)
                                                             }
-                                                            else if (link.name = 'Gallery') {
+                                                            else if (link.name === 'Gallery') {
                                                                 window.location.href = (`/Gallery/${section}`);
                                                                 window.location.hash = 'galleryHeader';
                                                             }
@@ -108,7 +108,7 @@ function NavBarMobile(props) {
                         <div className='links__item-wrapper'>
                             <div className="links__item" id="homeNavLink" style={{ textDecoration: 'none' }}
                             >Theme</div>
-                            <img className={`links__item-arrow${selectingTheme ? 'Active' : ''}`} src={scroll_arrow} />
+                            <img className={`links__item-arrow${selectingTheme ? 'Active' : ''}`} src={scroll_arrow} alt='dropdown arrow' />
                         </div>
                         <ul className={`links__item-sectionsMobile${selectingTheme ? 'Active' : ''}${props.theme.color}`} id='mobileThemes'>
                             {

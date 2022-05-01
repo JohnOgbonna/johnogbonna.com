@@ -25,13 +25,10 @@ function Webpage(props) {
         (savedTheme.dark === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) || savedTheme.dark === true ? true : false
     )
     useEffect(() => {
-        if (savedTheme.dark === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches || savedTheme.dark === true) {
-            setDarkMode(true);
-        }
-        else {
-            setDarkMode(false);
-        }
-    }, [theme])
+        if (savedTheme.dark === 'Auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) setDarkMode(true);
+        else if (savedTheme.dark === true) setDarkMode(true);
+        else setDarkMode(false);
+    }, [theme.dark, savedTheme.dark])
 
     return (
         <div className={`Webpage${darkMode ? 'Dark' : ''}`}>
@@ -40,7 +37,7 @@ function Webpage(props) {
                 section={section}
                 theme={theme}
                 changeTheme={changeTheme} />
-            <img src={coverPhoto} className="coverPhoto" id="coverPhoto" />
+            <img src={coverPhoto} className="coverPhoto" id="coverPhoto" alt="coverphoto" />
             <NavBar changeSelection={setSection}
                 theme={theme}
                 changeTheme={changeTheme} />
