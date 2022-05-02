@@ -21,7 +21,7 @@ function Home(props) {
                 <div className="section_text" id='aboutText'>
                     <h3 className={`section_header${props.theme.color}`}>About Me</h3>
                     <p className="section_paragraph">
-                        <span className="section_paragraph-greeting">Hi there!</span> My name is John Ogbonna, and I'd like to tell you about myself! I'm a full-stack web developer on the weekdays, and several other things after hours 😎. I'm based in Ottawa, Ontario, but I'm living in Calgary, Alberta right now. I have lots more to show and tell you, <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href='/'>learn more about me here!</a>
+                        <span className="section_paragraph-greeting">Hi there!</span> My name is John Ogbonna, and I'd like to tell you about myself! I'm a full-stack web developer on the weekdays, and several other things after hours 😎. I'm currently living in Calgary, Alberta. I have lots more to show and tell you, <a className={`sectionLink${props.darkMode ? 'dark' : ''}`} href='/About'>learn more about me here!</a>
                     </p>
                 </div>
                 <div className="sectionImages">

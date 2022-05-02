@@ -48,7 +48,7 @@ function NavBarMobile(props) {
         <div className={`NavBarMobile${props.theme.color}`}>
             <div className="NavBarMobile__line1" onClick={() => setSelecting(!selecting)}>
                 <img className="NavBarMobile__menu" src={selecting ? closeButton : menuButton} alt='menu button' />
-                <h2 className="NavBarMobile__header">{props.section}</h2>
+                <h2 className="NavBarMobile__header">{props.section === 'Home' ? 'Overview' : props.section}</h2>
             </div>
             <div className={`linksWrapper${selecting ? 'Active' : 'Hidden'}`} onClick={(e) => {
                 e.preventDefault();

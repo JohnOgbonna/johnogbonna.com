@@ -16,7 +16,7 @@ function About(props) {
                 <h3 className={`section_header${props.theme.color}`}>Bio</h3>
                 <div className="section_paragraphWrapper">
                     <p className="section_paragraph" id='aboutParagraph'>
-                        I was born on February 10th, 1997 in a town called Warri, located in southern Nigeria. I lived my first six years in Nigeria, coming moving permanently to Canada in September of 2003. I lived in Calgary, Alberta most of my Canadian life, and two of my siblings were born here. </p>
+                        I was born on February 10th, 1997 in a town called Warri, located in southern Nigeria. I lived my first six years in Nigeria, moving permanently to Canada in September of 2003. I lived in Calgary, Alberta most of my Canadian life, and two of my siblings were born here. </p>
                     <div className="section_paragraph-images">
                         <figure className="section_paragraph-image--about">
                             <img className="sectionImage" id="aboutImage" src={fam_photo8} alt='baptism' />
