@@ -16,6 +16,9 @@ ul{
         align-self: center;
         margin: 0 auto;
     }
+    &__Wrapper{
+        position: relative;
+    }
     &Mobile{
         &Red, &Blue, &Sky, &Purple, &Green, &Grey{
             display: flex;
@@ -236,8 +239,7 @@ ul{
     } 
 }
 #themes{
-    top: 46px;
-    right:1px;
+    top: 38px;
     width: 90px;
 
 }

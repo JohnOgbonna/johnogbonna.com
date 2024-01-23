@@ -83,7 +83,7 @@ function NavBar(props) {
           )
         })}
         <li className="links__itemTheme" id="homeNavLinkTheme">
-          <div>
+          <div className = 'links__Wrapper'>
             <p className='theme_header' onMouseEnter={() => { setThemeHovering(true) }}>Theme</p>
             <ul className={`links__item-sections${themeHovering ? 'Active' : ''}${props.theme.color}`} id='themes'>
               {

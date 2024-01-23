@@ -4,7 +4,7 @@ import nodejs_logo from '../../assets/logos/nodejs_logo.svg';
 import postgresql_logo from '../../assets/logos/postgresql_logo.svg';
 import react_logo from '../../assets/logos/react_logo.svg';
 import sass_logo from '../../assets/logos/sass_logo.svg';
-import resume from '../../assets/documents/Resume2021.pdf';
+import resume from '../../assets/documents/resume.pdf';
 import { useState } from 'react';
 import scrollArrow from '../../tools/other/scroll_arrow.svg'
 
@@ -58,7 +58,7 @@ function Skills(props) {
                 {languages.map((language, index) => {
                     return (
                         <div className="section_paragraph" id='skillsDisplay'>
-                            <img src={language.image} alt='selected display' onClick={() => {
+                            <img src={language.image} alt='selected display' className = 'icon'onClick={() => {
                                 setlargeViewIndex(index)
                             }} />
                         </div>)
