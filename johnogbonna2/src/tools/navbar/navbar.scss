@@ -1,0 +1,281 @@
+@use '../partials/mixins' as*;
+@use  '../partials/variables' as*;
+
+ul{
+    list-style: none;
+}
+.links{ 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding-right: 1rem; 
+    margin-right: 1rem;
+    margin: 0;
+    @include desktop{
+        max-width: 1290px;
+        align-self: center;
+        margin: 0 auto;
+    }
+    &__Wrapper{
+        position: relative;
+    }
+    &Mobile{
+        &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+            display: flex;
+            flex-direction: column; 
+            margin-top: 0; 
+            padding-top: 1rem;
+            padding-right: 0rem;
+            padding-left: 1rem;
+            width: 70%;
+            align-items: center;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-bottom: 3rem;
+            position: relative;
+            bottom: 1px;
+        }
+        @include themeBuilder;
+    }
+    &__item{
+        text-decoration: none;
+        color: #f5f5f5;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        &Theme{
+            font-size: 20.8px;
+        }
+        @include tablet{
+            font-size: 1.3rem;
+            margin-bottom: 0px;
+        }
+        &:hover{ 
+            text-decoration: underline; 
+            transform: scale(1.1); 
+            list-style: disc;
+        }
+        &-sectionsActive ,&-sections{
+            &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+            position: absolute;
+            padding: 1rem 1rem;
+            top: 38px;
+            right: -70px;
+            width: 150px;
+            border-radius: 0 0 6px 6px;
+            display: flex;
+            flex-direction: column;
+            transition: max-height 1s;
+            list-style: disc;
+            max-height: 400px;
+            }
+            @include themeBuilder;
+        }
+        &-sections{
+            &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                max-height: 0px;
+                height: 0px;
+                overflow:hidden;
+                padding:0;
+                &Active{
+                    max-height: 400px;
+                }
+            }
+                &Mobile{
+                    &Active {
+                        &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                            margin: 0 auto;
+                            padding:0;
+                            width: 100%;
+                            max-height: 1000px;
+                            transition: max-height .9s;
+                        }
+                    } 
+                    & {
+                        &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+                            max-height: 0px;
+                            transition: max-height .5s;
+                            margin: 0 auto;
+                            padding:0;
+                            width: 100%;
+                            overflow:hidden ;
+                    }
+                }   
+            }
+        }
+        &-section{
+            position: relative;
+            left: 15px;
+            padding: .5rem 0rem;
+            border-bottom: 1px solid whitesmoke;
+            color: whitesmoke;
+            cursor: pointer;
+            &:last-child{
+                margin-bottom: 1rem;
+                @include tablet{
+                border-bottom: none;
+                margin-bottom: 0rem;
+            }
+            }
+            &:hover{
+                transform: scale(1.1);
+                transition: .3s;
+                list-style: disc;
+            }
+        }
+        &-shade{
+            width: 1rem;
+            height: 1rem;
+            border-radius: 100%;
+            border: 1px solid whitesmoke;
+            margin: auto 0;
+        }
+        &-arrow, &-arrowActive{
+            height: 1.3rem;
+            width: 1.3rem;
+            transform: rotate(-180deg);
+            position: relative;
+            top: 4px;
+            margin-left: .5rem;
+            transition: 400ms;
+            &:hover{
+                transform: rotate(-180deg) scale(1.4);
+            }
+        }
+        &-arrowActive{
+            transform: rotate(90deg);
+            transition: 400ms;
+            &:hover{
+                transform: rotate(90deg) scale(1.4);
+            }
+        }
+        &-wrapper{
+            display: flex;
+            align-content: center;
+        }
+    }
+    &Wrapper{
+        &Active, &Hidden{
+        display: flex; 
+        justify-content: flex-end; 
+        position: fixed; 
+        width: 80%;
+        height: 100vh;
+        top:40px; 
+        margin-top: 0;
+        }
+        &Hidden{ 
+            right: -70%;
+            transition: 600ms;
+        } 
+        &Active{
+            right:0;
+            transition: 600ms;
+            z-index: 3;
+        } 
+    }
+    &__wrapper{
+        position: relative;
+    }
+    :last-child{ 
+        margin-right: 0;
+    }
+}
+.section{
+    &Link{
+        color: whitesmoke;
+        font-weight: bolder;
+    }
+}
+.NavBar{
+    &Red, &Blue, &Sky, &Purple, &Green, &Grey{
+        display: none;
+        font-family: head;
+        margin-top: -3px;
+        color: whitesmoke;
+        float:top;
+        @include tablet{
+        display: block;
+        box-sizing: border-box;
+        padding: .5rem 1rem ; 
+        position: sticky; 
+        top:0px;
+        z-index: 10;
+    }
+    @include desktop{
+        width: 100%;
+        }
+    }
+    @include themeBuilder;
+    &Mobile{
+        &Red, &Blue, &Sky, &Purple, &Green, &Grey{ 
+        height:40px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: flex-end;
+        position: sticky; 
+        top:0;
+        z-index: 10;
+        font-family: head;
+        @include tablet{ 
+            display: none;
+        }
+    }
+    &__header{
+        color: white;
+        margin-right: .7rem;
+    }
+    @include themeBuilder;
+        &__menu{ 
+            width: 1.5rem; 
+            height: 2rem;
+            margin-right: .5rem;
+        
+        
+        } 
+        &__line1{ 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    } 
+}
+#themes{
+    top: 38px;
+    width: 90px;
+
+}
+.theme{
+    &_header{
+        margin: 0;
+        cursor: pointer;
+    }
+    &_wrapper{
+        display: flex;
+        border-bottom: 1px solid whitesmoke;
+        align-content: center; 
+        justify-content: space-between;
+    }
+}
+#theme{
+    &Color{
+        font-size: 1rem;
+        border: none;
+        margin: 0;
+        @include mobile{
+           
+        }
+    }
+    &Mobile{
+        width: 100%;
+        flex-direction: column;
+    }
+}
+#shade{
+    @include themeBuilder;
+}
+a{
+    width: 100%;
+}
+#mobileThemes{
+    width: 60%;
+}
