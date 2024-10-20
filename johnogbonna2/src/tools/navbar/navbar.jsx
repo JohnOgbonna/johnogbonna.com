@@ -69,8 +69,7 @@ function NavBar(props) {
                               }, 100);
                             }
                             else if (link.name === 'Gallery') {
-                              window.location.href = (`/Gallery?category=${section}`);
-                              window.location.hash = 'galleryHeader';
+                              window.location.href = (`/Gallery?category=${section}#galleryHeader`);
                             }
                           }
                           }>{`${section} ${link.name === 'Gallery' ? 'Photos' : ''}`}</li>
